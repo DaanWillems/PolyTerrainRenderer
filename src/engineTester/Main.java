@@ -1,5 +1,7 @@
 package engineTester;
 
+import org.joml.Vector3f;
+
 import generation.TerrainGenerator;
 import object.Mesh;
 import object.Scene;
@@ -14,6 +16,10 @@ public class Main {
 		
 		Scene scene = new Scene();
 		Terrain terrain = new TerrainGenerator().generateTerrain();		
+		
+		terrain.move(0f, 0f, -10f);
+		terrain.scale(2f);
+		
 		scene.terrain = terrain;
 		
 		MainRenderer mr = new MainRenderer(scene);

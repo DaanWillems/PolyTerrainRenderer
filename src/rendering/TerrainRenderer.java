@@ -34,12 +34,7 @@ public class TerrainRenderer {
 	private void setMatrices(Terrain terrain) {
 	    projectionMatrix = Transformation.getProjectionMatrix();
 	    
-//	    worldMatrix = terrain.getWorldMatrix();
-	    worldMatrix =
-	            Transformation.getWorldMatrix(
-	                new Vector3f(0, 0, 0),
-	                new Vector3f(0, 0, 0),
-	                1);
+	    worldMatrix = terrain.getWorldMatrix();
 	    
 		shader.setUniform("worldMatrix", worldMatrix);
 		shader.setUniform("projectionMatrix", projectionMatrix);

@@ -2,7 +2,7 @@
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/LJWGL3"/>
-	<classpathentry kind="lib" path="C:/Users/Daan/OpenGL/joml-1.9.9.jar"/>
+	<classpathentry kind="lib" path="D:/OpenGL/LWJGL/joml-1.9.4.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/LWJGL3"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

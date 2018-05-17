@@ -8,9 +8,9 @@ public class TerrainGenerator {
 	public Terrain generateTerrain() {
 		
 		float[] vertices = new float[] {
-			 0f,   0.5f, -0.5f,
-			-0.5f, 0f,   -0.5f,
-			 0.5f, 0f,   -0.5f,
+			 0f,   -2f, -0.5f,
+			-0.5f, -2f,   0f,
+			 0.5f, -2f,   0f,
 		};
 		
 		Terrain t = new Terrain();
