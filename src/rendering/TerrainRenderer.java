@@ -9,6 +9,7 @@ import static org.lwjgl.opengl.GL30.glBindVertexArray;
 import org.joml.Matrix4f;
 import org.joml.Vector3f;
 
+import object.Scene;
 import object.Terrain;
 import shaders.TerrainShader;
 import util.Transformation;
@@ -22,34 +23,43 @@ public class TerrainRenderer {
 	public TerrainRenderer() {
 		
 		shader = new TerrainShader();
-		
 		try {
 			shader.createUniform("projectionMatrix");
 			shader.createUniform("worldMatrix");
+			shader.createUniform("viewMatrix");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
-	private void setMatrices(Terrain terrain) {
+	private void setMatrices(Scene scene) {
 	    projectionMatrix = Transformation.getProjectionMatrix();
 	    
-	    worldMatrix = terrain.getWorldMatrix();
+	    worldMatrix = scene.terrain.getWorldMatrix();
 	    
+	    shader.setUniform("viewMatrix", scene.camera.getViewMatrix());
 		shader.setUniform("worldMatrix", worldMatrix);
 		shader.setUniform("projectionMatrix", projectionMatrix);
 	}
 	
-	public void render(Terrain terrain) {
-		shader.start();
-		setMatrices(terrain);
+	public void render(Scene scene) {
+		if(scene.terrain == null) {
+			return;
+		}
 		
-	    glBindVertexArray(terrain.getVaoId());
+		shader.start();
+		setMatrices(scene);
+		
+	    glBindVertexArray(scene.terrain.getVaoId());
 	    glEnableVertexAttribArray(0);
+	    glEnableVertexAttribArray(1);
+	    glEnableVertexAttribArray(2);
 
-        glDrawArrays(GL_TRIANGLES, 0, terrain.getVertexCount());
-	    
+        glDrawArrays(GL_TRIANGLES, 0, scene.terrain.getVertexCount());
+        
 		glDisableVertexAttribArray(0);
+		glDisableVertexAttribArray(1);
+		glDisableVertexAttribArray(2);
 		glBindVertexArray(0);
 		
 		shader.stop();

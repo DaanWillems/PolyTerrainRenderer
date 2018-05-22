@@ -14,12 +14,14 @@ public class MainRenderer {
 	MeshRenderer meshRenderer;
 	TerrainRenderer terrainRenderer;
 	WaterRenderer waterRenderer;
-	Scene scene;
+	public Scene scene;
 		
 	public MainRenderer(Scene scene) {
 		this.scene = scene;
 		
 		terrainRenderer = new TerrainRenderer();
+		waterRenderer = new WaterRenderer();
+		meshRenderer = new MeshRenderer();
 	}
 	
 	public void render() {
@@ -28,9 +30,9 @@ public class MainRenderer {
 	}
 	
 	private void doMainRenderPass() {
-		terrainRenderer.render(scene.terrain);
-//		waterRenderer.render(scene.water);
-//		meshRenderer.render(scene.meshes);
+		terrainRenderer.render(scene);
+		waterRenderer.render(scene);
+		meshRenderer.render(scene);
 	}
 	
 	//Prepare screen for new render

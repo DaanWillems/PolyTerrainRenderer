@@ -19,7 +19,7 @@ public class Transformation {
     }
 
     public static Matrix4f getProjectionMatrix() {
-        float aspectRatio = DisplayManager.getWidth() / DisplayManager.getHeight();        
+        float aspectRatio = (float)DisplayManager.getWidth() / (float)DisplayManager.getHeight();        
         projectionMatrix.identity();
         projectionMatrix.perspective(FOV, aspectRatio, Z_NEAR, Z_FAR);
         return projectionMatrix;

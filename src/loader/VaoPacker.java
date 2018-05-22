@@ -1,17 +1,16 @@
 package loader;
 
-import static org.lwjgl.opengl.GL11.GL_FLOAT;
-import static org.lwjgl.opengl.GL15.GL_ARRAY_BUFFER;
-import static org.lwjgl.opengl.GL15.GL_STATIC_DRAW;
-import static org.lwjgl.opengl.GL15.glBindBuffer;
-import static org.lwjgl.opengl.GL15.glBufferData;
-import static org.lwjgl.opengl.GL15.glGenBuffers;
-import static org.lwjgl.opengl.GL20.glVertexAttribPointer;
-import static org.lwjgl.opengl.GL30.glBindVertexArray;
-import static org.lwjgl.opengl.GL30.glGenVertexArrays;
+import static org.lwjgl.glfw.GLFW.*;
+import static org.lwjgl.opengl.GL11.*;
+import static org.lwjgl.opengl.GL14.*;
+import static org.lwjgl.opengl.GL15.*;
+import static org.lwjgl.opengl.GL20.*;
+import static org.lwjgl.opengl.GL30.*;
+import static org.lwjgl.opengl.GL32.*;
 
 import java.nio.ByteBuffer;
 import java.nio.FloatBuffer;
+import java.nio.IntBuffer;
 import java.util.ArrayList;
  
 import org.lwjgl.BufferUtils;
@@ -21,11 +20,25 @@ public class VaoPacker {
 	
 	private ArrayList<Integer> vaos = new ArrayList<Integer>();
 
-	public static int packTerrain(float[] vertices) {
+	public static int loadToVao(float[] vertices) {
 		int vaoId = createVao();
-		
 		packVbo(0, 3, vertices);
-		
+		return vaoId;
+	}
+	
+	public static int loadToVao(float[] vertices, int[] indices, float[] normals) {
+		int vaoId = createVao();
+		packVbo(0, 3, vertices);
+		packVbo(1, 3, normals);
+		packIndices(indices);
+		return vaoId;
+	}
+	
+	public static int loadToVao(float[] vertices, float[] normals, float[] colours) {
+		int vaoId = createVao();
+		packVbo(0, 3, vertices);
+		packVbo(1, 3, normals);
+		packVbo(2, 3, colours);
 		return vaoId;
 	}
 	
@@ -42,5 +55,13 @@ public class VaoPacker {
 		glBindBuffer(GL_ARRAY_BUFFER, vboId);
 		glBufferData(GL_ARRAY_BUFFER, MeshBuffer, GL_STATIC_DRAW);
 		glVertexAttribPointer(pointer, interval, GL_FLOAT, false, 0, 0);
+	}
+	
+	public static void packIndices(int[] meshData) {
+		int idxVboId = glGenBuffers();
+		IntBuffer indicesBuffer = MemoryUtil.memAllocInt(meshData.length);
+		indicesBuffer.put(meshData).flip();
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, idxVboId);
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, indicesBuffer, GL_STATIC_DRAW);
 	}
 }

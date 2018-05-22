@@ -8,8 +8,10 @@ public class Scene {
 	public Water water;
 	public ArrayList<GuiElement> guiElements;
 	public ArrayList<Mesh> meshes;
+	public Camera camera;
 	
 	public Scene() {
+		camera = new Camera();
 		guiElements = new ArrayList<>();
 		meshes = new ArrayList<>();
 	}

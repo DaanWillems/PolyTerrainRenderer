@@ -2,7 +2,6 @@
 
 layout (location=0) in vec3 position;
 layout (location=1) in vec3 normal;
-layout (location=2) in vec3 colour;
 
 out vec3 pass_normal;
 
@@ -22,9 +21,14 @@ vec3 calculateLighting(){
 	return (lightColour * lightBias.x) + (brightness * lightColour * lightBias.y);
 }
 
+float rand(vec2 co){
+    return fract(sin(dot(co.xy ,vec2(12.9898,78.233))) * 43758.5453);
+}
+
 void main()
 {
+	float r = rand(vec2(position.x, position.y));
 	gl_Position = projectionMatrix * viewMatrix * worldMatrix * vec4(position, 1.0);
 	vec3 lighting = calculateLighting();
-	pass_normal = colour*lighting;
+	pass_normal = vec3(1, 1, 1)*lighting;
 }
