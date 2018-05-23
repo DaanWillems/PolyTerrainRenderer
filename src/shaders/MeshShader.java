@@ -1,5 +1,7 @@
 package shaders;
 
+import org.joml.Vector4f;
+
 public class MeshShader extends ShaderProgram{
 	
 	private static final String VERTEX_FILE ="src/shaders/meshVertexShader.txt";
@@ -13,5 +15,4 @@ public class MeshShader extends ShaderProgram{
 	protected void bindAttributes() {
 		super.bindAttribute(0, "position");
 	}
-
 }

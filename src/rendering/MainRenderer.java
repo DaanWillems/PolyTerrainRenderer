@@ -5,7 +5,7 @@ import static org.lwjgl.opengl.GL11.GL_DEPTH_BUFFER_BIT;
 import static org.lwjgl.opengl.GL11.glClear;
 import static org.lwjgl.opengl.GL11.glClearColor;
 
-import object.Scene;
+import graph.Scene;
 import shaders.TerrainShader;
 
 public class MainRenderer {

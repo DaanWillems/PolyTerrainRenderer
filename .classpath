@@ -4,5 +4,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="lib" path="D:/OpenGL/LWJGL/joml-1.9.4.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/LWJGL3"/>
+	<classpathentry kind="lib" path="D:/OpenGL/LWJGL/PNGDecoder.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

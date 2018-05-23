@@ -9,8 +9,8 @@ import static org.lwjgl.opengl.GL30.glBindVertexArray;
 import org.joml.Matrix4f;
 import org.joml.Vector3f;
 
-import object.Scene;
-import object.Terrain;
+import graph.Scene;
+import graph.Terrain;
 import shaders.TerrainShader;
 import util.Transformation;
 

@@ -21,7 +21,7 @@ import static org.lwjgl.glfw.GLFW.GLFW_KEY_TAB;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
 
-import object.Scene;
+import graph.Scene;
 import rendering.DisplayManager;
 import rendering.MainRenderer;
 

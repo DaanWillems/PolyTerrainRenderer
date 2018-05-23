@@ -4,13 +4,14 @@ import org.joml.Vector3f;
 
 import generation.TerrainGenerator;
 import generation.WaterGenerator;
+import graph.Mesh;
+import graph.Scene;
+import graph.Terrain;
+import graph.Water;
 import input.Input;
 import input.MouseInput;
+import loader.StaticMeshLoader;
 import loader.VaoPacker;
-import object.Mesh;
-import object.Scene;
-import object.Terrain;
-import object.Water;
 import rendering.DisplayManager;
 import rendering.MainRenderer;
 import util.OBJLoader;
@@ -21,21 +22,22 @@ public class Main {
 
 	public static void main(String[] args) {
 		DisplayManager.createDisplay();
-		float i = 0f;
 		Scene scene = new Scene();
 		
-		Mesh mesh = null;
+		Mesh[] meshes = null;
 				
 		try {
-			mesh = OBJLoader.loadMesh("res/cube.obj");
+			meshes = StaticMeshLoader.load("src/res/house.obj", "");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		mesh.move(20f, -2f, 20f);
-		mesh.scale(4f);
-
-		scene.meshes.add(mesh);
+		for(int i = 0; i < meshes.length; i++) {
+			Mesh mesh = meshes[i];
+			scene.meshes.add(mesh);
+			mesh.move(20f, 10f, 20f);
+			mesh.scale(4f);
+		}
 		
 		Terrain terrain = new TerrainGenerator().generateTerrain();
 		
@@ -54,7 +56,7 @@ public class Main {
 			DisplayManager.updateDisplay();
 			mr.render();
 			input.input();
-			mesh.move(0.011f, 0f, 0f);
+//			mesh.move(0.011f, 0f, 0f);
 //			mesh.rotate(0, 10f, 0f);
 		}
 	}

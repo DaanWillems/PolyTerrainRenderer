@@ -6,8 +6,8 @@ import java.util.List;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
 
+import graph.Mesh;
 import loader.VaoPacker;
-import object.Mesh;
 
 public class OBJLoader {
     public static Mesh loadMesh(String fileName) throws Exception {
@@ -92,14 +92,10 @@ public class OBJLoader {
 //            0, 1, 3, 3, 1, 2,
 //        };
         
-        int vaoId = VaoPacker.loadToVao(posArr, indicesArr, normArr);
+        int vaoId = VaoPacker.loadMeshToVao(posArr, indicesArr, normArr);
         Mesh mesh = new Mesh();
         mesh.setVaoId(vaoId);
         mesh.setVertexCount(indicesArr.length);
-        
-        posList.forEach(pos -> {
-        	System.out.println(pos);
-        });
         
         return mesh;
     }

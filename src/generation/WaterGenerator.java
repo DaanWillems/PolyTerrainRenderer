@@ -1,8 +1,8 @@
 package generation;
 
+import graph.Terrain;
+import graph.Water;
 import loader.VaoPacker;
-import object.Terrain;
-import object.Water;
 
 public class WaterGenerator {
 

@@ -6,8 +6,8 @@ import java.util.concurrent.ThreadLocalRandom;
 import org.joml.Vector3f;
 
 import generation.PerlinNoise;
+import graph.Terrain;
 import loader.VaoPacker;
-import object.Terrain;
 
 public class TerrainGenerator{
 
@@ -54,7 +54,7 @@ public class TerrainGenerator{
 
 		Terrain t = new Terrain();
 		t.setVertexCount(positions.size());
-		int vaoId = VaoPacker.loadToVao(toArray(positions), toArray(normals), toArray(colours));
+		int vaoId = VaoPacker.loadTerrainToVao(toArray(positions), toArray(normals), toArray(colours));
 		t.setVaoId(vaoId);
 		
 		return t;

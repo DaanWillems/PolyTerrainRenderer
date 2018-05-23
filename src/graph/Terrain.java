@@ -1,4 +1,4 @@
-package object;
+package graph;
 
 public class Terrain extends Mesh {
 	

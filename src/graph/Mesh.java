@@ -1,4 +1,4 @@
-package object;
+package graph;
 
 import org.joml.Matrix4f;
 import org.joml.Vector3f;
@@ -14,11 +14,20 @@ public class Mesh {
 	private int vertexCount;
 	private int vaoId;
 	private Matrix4f worldMatrix;
+	private Texture texture;
+	private Material material;
 	
 	public Mesh() {
 		position = new Vector3f(0f, 0f, 0f);
 		rotation = new Vector3f(0f, 0f, 0f);
+		material = new Material();
 		worldMatrix = new Matrix4f();
+		try {
+			texture = new Texture("../res/brick.png");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public Matrix4f getWorldMatrix() {
@@ -57,6 +66,23 @@ public class Mesh {
 	public void setVertexCount(int vertexCount) {
 		this.vertexCount = vertexCount;
 	}
+	
+	public Texture getTexture() {
+		return texture;
+	}
+
+	public void setTexture(Texture texture) {
+		this.texture = texture;
+	}
+	
+	public Material getMaterial() {
+		return material;
+	}
+
+	public void setMaterial(Material material) {
+		this.material = material;
+	}
+
 	
 	public void move(float x, float y, float z) {
 		position = position.add(new Vector3f(x, y, z));
