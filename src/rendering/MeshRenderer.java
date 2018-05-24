@@ -34,7 +34,7 @@ public class MeshRenderer {
 			shader.createUniform("worldMatrix");
 			shader.createUniform("viewMatrix");
 			shader.createUniform("diffuseColour");
-//			shader.createUniform("texture_sampler");
+			shader.createUniform("texture_sampler");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -49,14 +49,14 @@ public class MeshRenderer {
 		shader.setUniform("worldMatrix", worldMatrix);
 		shader.setUniform("projectionMatrix", projectionMatrix);
 		shader.setUniform("diffuseColour", mesh.getMaterial().getDiffuseColour());
-//		shader.setUniform("texture_sampler", 0);
+		shader.setUniform("texture_sampler", 0);
 	}
 	
 	public void render(Scene scene) {
 		shader.start();
 		scene.meshes.forEach(mesh -> {
-//			glActiveTexture(GL_TEXTURE0);
-//			glBindTexture(GL_TEXTURE_2D, mesh.getTexture().getId());
+			glActiveTexture(GL_TEXTURE0);
+			glBindTexture(GL_TEXTURE_2D, mesh.getTexture().getId());
 			setMatrices(mesh, scene);
 		    glBindVertexArray(mesh.getVaoId());
 		    glEnableVertexAttribArray(0);

@@ -13,6 +13,7 @@ import org.lwjgl.assimp.AIMaterial;
 
 import graph.Material;
 import graph.Mesh;
+import graph.Texture;
 
 import static org.lwjgl.assimp.Assimp.*;
 
@@ -48,6 +49,12 @@ public class StaticMeshLoader {
             
             System.out.println(new Vector4f(colour.r(), colour.g(), colour.b(), colour.a()));
             material.setDiffuseColour(new Vector4f(colour.r(), colour.g(), colour.b(), colour.a()));
+            
+            if(texturesDir.length() != 0) {
+            	//Texture t = new Texture("../../../res/models/textures/"+texturesDir);
+            	//material.setTexture(t);
+            }
+            
             materials[i] = material;
         }
         

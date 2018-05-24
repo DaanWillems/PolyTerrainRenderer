@@ -23,7 +23,7 @@ public class Mesh {
 		material = new Material();
 		worldMatrix = new Matrix4f();
 		try {
-			texture = new Texture("../res/brick.png");
+			texture = new Texture("res/models/test.png");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

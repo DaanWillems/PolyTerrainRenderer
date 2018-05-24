@@ -14,6 +14,9 @@ import static org.lwjgl.opengl.GL11.glTexImage2D;
 import static org.lwjgl.opengl.GL11.glTexParameteri;
 import static org.lwjgl.opengl.GL30.glGenerateMipmap;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.nio.ByteBuffer;
 
 import de.matthiasmann.twl.utils.PNGDecoder;
@@ -23,8 +26,10 @@ import graph.Texture;
 public class TextureLoader {
     public static int loadTexture(String fileName) throws Exception {
         // Load Texture file
-    	System.out.println(fileName);
-        PNGDecoder decoder = new PNGDecoder(Texture.class.getResourceAsStream(fileName));
+    	File file = new File(fileName);
+    	System.out.println(file.getPath());
+    	InputStream targetStream = new FileInputStream(file);
+        PNGDecoder decoder = new PNGDecoder(targetStream);
 
         // Load texture contents into a byte buffer
         ByteBuffer buf = ByteBuffer.allocateDirect(

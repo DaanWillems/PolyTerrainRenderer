@@ -27,7 +27,7 @@ public class Main {
 		Mesh[] meshes = null;
 				
 		try {
-			meshes = StaticMeshLoader.load("src/res/house.obj", "");
+			meshes = StaticMeshLoader.load("res/models/Bush2With.obj", "test.png");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
